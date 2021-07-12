@@ -33,3 +33,7 @@ header {
 #choices{
     color: green
 }
+
+.hidden{
+    display: none;
+}
