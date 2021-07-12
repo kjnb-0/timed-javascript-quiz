@@ -1,17 +1,25 @@
 header {
     color: black;
     font-weight: bold;
+    margin: 0 auto;
+    padding: 5rem;
 }
 
 
-#titles-headers{
+#questions{
     color:blue;
 }
 
 #timer{
-    color: brown
+    color: brown;
+    border: solid brown;
+    text-align: center;
+}
+#timer-count{
+    padding: 2rem;
+    font-size: 2.5rem;
 }
 
-#questions{
+#choices{
     color: green
 }

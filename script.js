@@ -1,35 +1,63 @@
-var titlesHeaders = document.querySelector("#titles-headers")
+console.log("test");
 
-//function welcoming/explaining how the quiz works
-function welcomeToQuiz(){
-var welcomeMessage = document.querySelector("#titles-headers");
-welcomeMessage.textContent("Welcome to the quiz! Use your Javascript knowledge to answer the following questions before the timer runs out. Good luck!");
+//questions and answers objects
+var quizQuestions = [
+  {
+    questiontitle: "placeholder1",
+    questionchoices: "placeholderchoices",
+    questionanswer: "placeholderanswers",
+  },
+];
+
+//
+var startButton = document.querySelector("#start-btn");
+
+var lastQuestion = false;
+
+//timer variables
+var timer;
+var timerCount;
+var timerElement = document.querySelector("#timer-count");
+
+// to do....
+// write timer function to countdown and end game
+//write function to generate questions and answers using key/value pairs
+//write function to keep score
+
+// write welcome message in the start quiz function
+function startQuiz() {
+  var welcomeMessage =
+    "Welcome to the Javascript quiz! Use your Javascript know-how to choose the correct answers before the timer runs out. Good luck!";
+  console.log(welcomeMessage);
+  //alert(welcome);
+  timerCount = 60;
+  startTimer();
 }
 
-// to do.... 
-// write timer function to countdown and end game 
-// write welcome message function
-//write function to generate questions and answers
-//write function to keep score 
-//
+function endQuiz() {
+  var endQuizMessage = "End of quiz! Submit your scores";
+  console.log(endQuizMessage);
+  //alert(endQuizMessage)
 
+  //function to submit initials and score
+  //play again
+}
 
-var answerChoices = document.createElement("ol")
+//timer function to start and stop quiz timer
+//if timer is 0 or the last question is reached, ends game
+function startTimer() {
+  // Sets timer
+  timer = setInterval(function () {
+    timerCount--;
+    timerElement.textContent = timerCount;
 
-var choice1 = document.createElement("li")
+    // Tests if time has run out or end of questions is reached
+    if (timerCount === 0 || lastQuestion) {
+      // Clears interval
+      clearInterval(timer);
+      endQuiz(); //(message, input initials and score)
+    }
+  }, 1000);
+}
 
-choice1.textContent("choose option A")
-
-// TODO: Add ordered list items containing four favorite foods
-
-//define the text content for the list variables
-choice1.textContent = "food1";
-li2.textContent = "food2";
-li3.textContent = "food3";
-li4.textContent = "food4";
-
-//append list items to ordered list
-answerChoices.appendChild(li1);
-listEl.appendChild(li2);
-listEl.appendChild(li3);
-listEl.appendChild(li4);
+startButton.addEventListener("click", startQuiz);
