@@ -20,6 +20,16 @@ header {
     font-size: 2.5rem;
 }
 
+#score{
+    color: brown;
+    border: solid brown;
+    text-align: center;
+}
+#score-count{
+    padding: 2rem;
+    font-size: 2.5rem;
+}
+
 #choices{
     color: green
 }

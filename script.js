@@ -1,4 +1,7 @@
-console.log("test");
+// to do....
+//write function to generate questions and answers using key/value pairs
+//write function to keep score
+
 
 //questions and answers objects
 var quizQuestions = [
@@ -9,20 +12,23 @@ var quizQuestions = [
   },
 ];
 
-//
 var startButton = document.querySelector("#start-btn");
+var questions = document.querySelector("#questions");
+var choices = document.querySelector("#choices");
 
 var lastQuestion = false;
 
 //timer variables
 var timer;
-var timerCount;
+var timerCount = 60;
 var timerElement = document.querySelector("#timer-count");
 
-// to do....
-// write timer function to countdown and end game
-//write function to generate questions and answers using key/value pairs
-//write function to keep score
+//score variables
+var score;
+var scoreCount = 0;
+var scoreElement = document.querySelector("#score-count");
+
+
 
 // write welcome message in the start quiz function
 function startQuiz() {
@@ -30,9 +36,37 @@ function startQuiz() {
     "Welcome to the Javascript quiz! Use your Javascript know-how to choose the correct answers before the timer runs out. Good luck!";
   console.log(welcomeMessage);
   //alert(welcome);
-  timerCount = 60;
+  scoreElement.textContent = scoreCount;
   startTimer();
+  generateQuestions();
 }
+
+function rightAnswer() {
+    var rightAnswerMessage = "Correct!";
+    //alert(rightAnswerMessage);
+    console.log(rightAnswerMessage)
+    scoreCount += 10;
+    scoreElement.textContent = scoreCount
+}
+
+function wrongAnswer(){
+    var wrongAnswerMessage = "Incorrect";
+    //alert(wrongAnswerMessage);
+    console.log(wrongAnswerMessage)
+    timerCount -= 10;
+    scoreElement.textContent = scoreCount;
+}
+
+//THIS NEEDS WORK! access questions, answers
+//display question and answer
+//pick correct, display right/wrong function
+function generateQuestions(){
+    console.log(quizQuestions);
+    //console.log(Object.values(quizQuestions,quizchoices))
+    
+}
+
+
 
 function endQuiz() {
   var endQuizMessage = "End of quiz! Submit your scores";
@@ -50,7 +84,6 @@ function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
-
     // Tests if time has run out or end of questions is reached
     if (timerCount === 0 || lastQuestion) {
       // Clears interval
