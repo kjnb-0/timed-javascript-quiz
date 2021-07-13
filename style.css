@@ -3,17 +3,36 @@ header {
     font-weight: bold;
     margin: 0 auto;
     padding: 5rem;
+    background-color: navy;
+    display: flex;
 }
 
+#start-btn,
+#high-scores {
+    border: 4px solid darkslategray;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: papayawhip;
+    color: darkslategray;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* .container {
+} */
 
 #questions{
-    color:blue;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    color: darkslategray;
+    font-size: 20px;
 }
 
 #timer{
-    color: brown;
-    border: solid brown;
+    color: navy;
+    border: solid navy;
     text-align: center;
+    margin-top: 5rem;
 }
 #timer-count{
     padding: 2rem;
@@ -21,8 +40,8 @@ header {
 }
 
 #score{
-    color: brown;
-    border: solid brown;
+    color: navy;
+    border: solid navy;
     text-align: center;
 }
 #score-count{
@@ -30,8 +49,22 @@ header {
     font-size: 2.5rem;
 }
 
-#choices{
-    color: green
+#choices1,
+#choices2,
+#choices3,
+#choices4 {
+    margin: 0 auto;
+    border: 10px solid navy;
+    background-color:papayawhip;
+    color:darkslategray;
+    font-size: 1.5rem;
+}
+
+#scores-form {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    color: darkslategray;
+    font-size: 20px;
 }
 
 .hidden{

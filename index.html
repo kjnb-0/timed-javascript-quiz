@@ -15,36 +15,50 @@
 
   <body>
     <header>
-      <button id="start-btn">start quiz</button>
+      <button id="start-btn">Start Quiz</button>
 
-      <button id="high-scores">high scores</button>
+      <button id="high-scores">See High Scores</button>
     </header>
     <main>
       <div class="container">
         <div class="row">
-          <div class="col-8 hidden" id="testarea">
-            <div id="questions">this is where questions will go </div>
-            
-            <div id="choicesbox"> 
-            <div id="choices1">this is where choices will go</div>
-            <div id="choices2">this is where choices will go</div>
-            <div id="choices3">this is where choices will go</div>
-            <div id="choices4">this is where choices will go</div>
-        </div>
+          <div class="col-4 hidden" id="testarea">
+            <div id="questions">this is where questions will go</div>
 
+            <div id="choicesbox">
+              <div id="choices1">this is where choices will go</div>
+              <br />
+              <div id="choices2">this is where choices will go</div>
+              <br />
+              <div id="choices3">this is where choices will go</div>
+              <br />
+              <div id="choices4">this is where choices will go</div>
+              <br />
+            </div>
+          </div>
+
+          <div class="col-4 hidden" id="scoresarea">
+            <form id="scores-form">
+              <h4>Nice work! Enter your initials to save your score</h4>
+              <label for="initials"> Initials: </label>
+              <input type="text" id="initials" name="initials" />
+              <p>Your score:<span id="currentscore"> </span></p>
+              <button id="submitscore">Submit</button>
+            </form>
           </div>
 
           <div class="col-4">
             <div id="timer">
-              <h4>TIMER</h4>
-              <p>there are</p>
+              <h4>TIMER ⏳</h4>
+              <p>There are</p>
               <div id="timer-count"></div>
               <p>seconds left</p>
             </div>
-
+            <br />
+            <br />
             <div id="score">
-              <h4>SCORE</h4>
-              <p>you have</p>
+              <h4>SCORE ✅</h4>
+              <p>You have</p>
               <div id="score-count"></div>
               <p>points</p>
             </div>

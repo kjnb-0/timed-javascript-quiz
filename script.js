@@ -1,29 +1,29 @@
 //questions and answers objects
 var quizQuestions = [
   {
-    question: "bla bla placeholder",
-    choices: ["A", "B", "C", "D"],
-    answer: "C",
+    question: "Which of the following is not a Javascript variable type?",
+    choices: ["A. Number", "B. String", "C. Display", "D. Boolean"],
+    answer: "C. Display",
   },
   {
-    question: "example",
-    choices: ["1", "2", "3", "4"],
-    answer: "4",
+    question: "What symbol should be used to end a Javascript statement?",
+    choices: ["A. *", "B. ;", "C. []", "D. ,"],
+    answer: "B. ;",
   },
   {
-    question: "bla bla placeholder",
-    choices: ["A", "B", "C", "D"],
-    answer: "C",
+    question: "What does '++' indicate?",
+    choices: ["A. Move to next function", "B. Multiply by 2", "C. Square the value", "D. Increase by 1"],
+    answer: "D. Increase by 1",
   },
   {
-    question: "bla bla placeholder",
-    choices: ["A", "B", "C", "D"],
-    answer: "C",
+    question: "What symbole is used to assign a value to a variable?",
+    choices: ["A. =", "B. <=", "C. ==", "D. []"],
+    answer: "A. =",
   },
   {
-    question: "bla bla placeholder",
-    choices: ["A", "B", "C", "D"],
-    answer: "C",
+    question: "How are strings stored?",
+    choices: ["A. Using double quotes", "B. Using single quotes", "C. Using either single or double quotes", "D. No quotes are needed"],
+    answer: "C. Using either single or double quotes",
   },
 ];
 
@@ -38,6 +38,8 @@ var choices1 = document.querySelector("#choices1");
 var choices2 = document.querySelector("#choices2");
 var choices3 = document.querySelector("#choices3");
 var choices4 = document.querySelector("#choices4");
+var userInitials = document.querySelector("#initials").value;
+var submitButton = document.querySelector("#submitscore");
 
 //timer variables
 var timer;
@@ -53,18 +55,18 @@ var scoreElement = document.querySelector("#score-count");
 function startQuiz() {
   var welcomeMessage =
     "Welcome to the Javascript quiz! Use your Javascript know-how to choose the correct answers before the timer runs out. Good luck!";
-  console.log(welcomeMessage);
-  //alert(welcome);
+  alert(welcomeMessage);
   scoreElement.textContent = scoreCount;
   timerElement.textContent = timerCount;
   document.querySelector("#testarea").classList.remove("hidden");
+  document.querySelector("#scoresarea").classList.add("hidden");
   startTimer();
   generateQuestions();
 }
 
 function rightAnswer() {
   var rightAnswerMessage = "Correct";
-  //alert(rightAnswerMessage);
+  alert(rightAnswerMessage);
   scoreCount += 10;
   scoreElement.textContent = scoreCount;
 
@@ -78,7 +80,7 @@ function rightAnswer() {
 
 function wrongAnswer() {
   var wrongAnswerMessage = "Incorrect";
-  //alert(wrongAnswerMessage);
+  alert(wrongAnswerMessage);
   timerCount -= 10;
   scoreElement.textContent = scoreCount;
   currentQuestionIndex++;
@@ -108,18 +110,29 @@ function chooseAnswer(event) {
 }
 
 function endQuiz() {
-  var endQuizMessage = "End of quiz! Submit your scores";
-  //alert(endQuizMessage)
   lastQuestion = true;
   //hides test area when quiz ends
   document.querySelector("#testarea").classList.add("hidden");
-  //function to submit initials and score
-  //play again
+  document.querySelector("#scoresarea").classList.remove("hidden");
+  //shows score on form
+  document.querySelector("#currentscore").textContent = scoreCount;
+  saveScores();
 }
 
-//function to enter name/scores, store in local storage
 
-//function for high scores button to access local storage and display info
+//this is saving the score, but not the initials / user input from the form
+function saveScores() {
+  localStorage.setItem("high score", scoreCount);
+  localStorage.setItem("initials", userInitials);
+}
+
+//displaying score but not initials 
+function showScores() {
+  alert(
+    localStorage.getItem("high score", scoreCount) +
+      localStorage.getItem("initials", userInitials)
+  );
+}
 
 //timer function to start and stop quiz timer
 //if timer is 0 or the last question is reached, ends game
@@ -136,7 +149,10 @@ function startTimer() {
     }
   }, 1000);
 }
-
+//on click, check user selection with quiz answer
 document.querySelector("#choicesbox").addEventListener("click", chooseAnswer);
+//on click, high scores button retrieves scores
+document.querySelector("#high-scores").addEventListener("click", showScores);
 
+submitButton.addEventListener("click", saveScores);
 startButton.addEventListener("click", startQuiz);
