@@ -142,7 +142,7 @@ function startTimer() {
     timerCount--;
     timerElement.textContent = timerCount;
     // Tests if time has run out or end of questions is reached
-    if (timerCount === 0 || lastQuestion) {
+    if (timerCount <= 0 || lastQuestion) {
       // Clears interval
       clearInterval(timer);
       endQuiz(); //(message, input initials and score)
